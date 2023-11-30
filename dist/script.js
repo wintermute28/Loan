@@ -82,7 +82,9 @@ class Download {
   }
   init() {
     this.btns.forEach(item => {
-      item.addEventListener("click", () => {
+      item.addEventListener("click", e => {
+        e.preventDefault();
+        e.stopPropagation();
         this.downloadItem(this.path);
       });
     });
@@ -165,6 +167,7 @@ class Form {
     let inputs = document.querySelectorAll("[name='phone']");
     inputs.forEach(input => {
       input.addEventListener("input", createMask);
+      input.addEventListener("keypress", createMask);
       input.addEventListener("focus", createMask);
       input.addEventListener("blur", createMask);
     });
@@ -320,11 +323,13 @@ class ShowInfo {
   init() {
     this.btns.forEach(btn => {
       btn.addEventListener("click", () => {
-        const sibling = btn.closest(".module__info-show").nextElementSibling;
-        sibling.classList.toggle("msg");
-        sibling.classList.toggle("animated");
-        sibling.classList.toggle("fadeInUp");
-        sibling.style.marginTop = "20px";
+        try {
+          const sibling = btn.closest(".module__info-show").nextElementSibling;
+          sibling.classList.toggle("msg");
+          sibling.classList.toggle("animated");
+          sibling.classList.toggle("fadeInUp");
+          sibling.style.marginTop = "20px";
+        } catch (e) {}
       });
     });
   }

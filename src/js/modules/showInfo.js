@@ -7,12 +7,15 @@ export default class ShowInfo {
     init() {
         this.btns.forEach(btn => {
             btn.addEventListener("click", () => {
-                const sibling = btn.closest(".module__info-show").nextElementSibling;
+                try {
+                    const sibling = btn.closest(".module__info-show").nextElementSibling;
 
-                sibling.classList.toggle("msg");
-                sibling.classList.toggle("animated");
-                sibling.classList.toggle("fadeInUp");
-                sibling.style.marginTop = "20px";
+                    sibling.classList.toggle("msg");
+                    sibling.classList.toggle("animated");
+                    sibling.classList.toggle("fadeInUp");
+                    sibling.style.marginTop = "20px";
+                } catch(e){}
+
             });
         })
     }
