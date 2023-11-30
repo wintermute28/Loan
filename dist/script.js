@@ -268,6 +268,35 @@ class VideoPlayer {
 
 /***/ }),
 
+/***/ "./src/js/modules/showInfo.js":
+/*!************************************!*\
+  !*** ./src/js/modules/showInfo.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ShowInfo)
+/* harmony export */ });
+class ShowInfo {
+  constructor(triggers) {
+    this.btns = document.querySelectorAll(triggers);
+  }
+  init() {
+    this.btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const sibling = btn.closest(".module__info-show").nextElementSibling;
+        sibling.classList.toggle("msg");
+        sibling.classList.toggle("animated");
+        sibling.classList.toggle("fadeInUp");
+        sibling.style.marginTop = "20px";
+      });
+    });
+  }
+}
+
+/***/ }),
+
 /***/ "./src/js/modules/slider/slider-main.js":
 /*!**********************************************!*\
   !*** ./src/js/modules/slider/slider-main.js ***!
@@ -533,6 +562,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_playVideo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/playVideo */ "./src/js/modules/playVideo.js");
 /* harmony import */ var _modules_difference__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/difference */ "./src/js/modules/difference.js");
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
+/* harmony import */ var _modules_showInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/showInfo */ "./src/js/modules/showInfo.js");
+
 
 
 
@@ -577,6 +608,7 @@ window.addEventListener("DOMContentLoaded", () => {
   new _modules_playVideo__WEBPACK_IMPORTED_MODULE_2__["default"]('.module__video-item .play', '.overlay').init();
   new _modules_difference__WEBPACK_IMPORTED_MODULE_3__["default"](".officerold", ".officernew", ".officer__card-item").init();
   new _modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"](".form").init();
+  new _modules_showInfo__WEBPACK_IMPORTED_MODULE_5__["default"](".plus__content").init();
 });
 })();
 
